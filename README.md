@@ -1,5 +1,6 @@
-# Super Mario 64 Port
+# Super Mario 64 Port - PS3 Port
 
+- The PS3 port is still in development. Expect issues.
 - This repo contains a full decompilation of Super Mario 64 (J), (U), and (E) with minor exceptions in the audio subsystem.
 - Naming and documentation of the source code and data structures are in progress.
 - Efforts to decompile the Shindou ROM steadily advance toward a matching build.
@@ -8,16 +9,12 @@
 This repo does not include all assets necessary for compiling the game.
 A prior copy of the game is required to extract the assets.
 
-## Building PS3 executables
-
-The PS3 port is still in development. Expect issues.
-
 ### Using Docker
 
 0. Ensure Git and Docker are installed on your system.
 1. Check out repo, submodules, etc:
 ```
-git clone https://github.com/fgsfdsfgs/sm64-port.git -b ps3 --recursive
+git clone https://github.com/sdiraimondo/sm64-port.git -b ps3 --recursive
 cd sm64-port
 ```
 2. Copy in your baserom.XX.z64: `cp /path/to/baserom.us.z64 .`

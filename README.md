@@ -14,7 +14,7 @@ A prior copy of the game is required to extract the assets.
 0. Ensure Git and Docker are installed on your system.
 1. Check out repo, submodules, etc:
 ```
-git clone https://github.com/sdiraimondo/sm64-port.git -b ps3 --recursive
+git clone https://github.com/sdiraimondo/sm64-ps3-port.git -b ps3 --recursive
 cd sm64-port
 ```
 2. Copy in your baserom.XX.z64: `cp /path/to/baserom.us.z64 .`

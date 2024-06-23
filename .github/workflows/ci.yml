@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install libelf-dev libelf++0 libelf1 libelf build-essential pkg-config libusb-1.0-0-dev git gcc g++ gcc-multilib g++-multilib make libsdl2-dev zlib1g-dev 
+          sudo apt-get install libelf-dev libelf++0 libelf1 build-essential pkg-config libusb-1.0-0-dev git gcc g++ gcc-multilib g++-multilib make libsdl2-dev zlib1g-dev 
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Build up 

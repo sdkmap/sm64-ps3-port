@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "port" ]
+  pull_request:
+    branches: [ "port" ]
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install build-essential pkg-config libusb-1.0-0-dev git gcc g++ gcc-multilib g++-multilib make libsdl2-dev zlib1g-dev 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build 
+        run: |
+         wget -O baserom.us.z64 https://archive.org/download/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
+         make VERSION=us -j4 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mario64-ps3
+          path: .
+          retention-days: 0
+
+ 

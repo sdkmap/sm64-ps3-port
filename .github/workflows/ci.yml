@@ -14,13 +14,36 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install build-essential pkg-config libusb-1.0-0-dev git gcc g++ gcc-multilib g++-multilib make libsdl2-dev zlib1g-dev 
+          sudo apt-get install libelf-dev libelf++0 libelf1 libelf build-essential pkg-config libusb-1.0-0-dev git gcc g++ gcc-multilib g++-multilib make libsdl2-dev zlib1g-dev 
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Build 
+      - name: Build up 
         run: |
+         echo 'export PS3DEV=/usr/local/ps3dev' >> ~/.bashrc
+         echo 'export PSL1GHT=$PS3DEV/libpsl1ght' >> ~/.bashrc
+         echo 'export PATH="$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin"' >> ~/.bashrc
+         . ~/.bashrc
+         sudo mkdir $PS3DEV
+         sudo chown $USER $PS3DEV
+         export BUILDDIR=/usr/src/ps3toolchain
+         ./toolchain.sh
+         sudo git clone https://github.com/ps3dev/PSL1GHT.git /usr/src/psl1ght
+         sudo chown -R $USER /usr/src/psl1ght
+         cd /usr/src/psl1ght
+         make all install
+         sudo chown -R root:root $PS3DEV $BUILDDIR /usr/src/psl1ght
+         mkdir ~/ps3dev
+         cp -r $BUILDDIR/build/psl1ght/samples ~/ps3dev
+         cd ~/ps3dev/samples
+         make
+         cd ~
+         sudo rm -rf $BUILDDIR /usr/src/psl1ght
+
+      - name: build
+      - run: |
          wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
          make VERSION=us -j4 
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:

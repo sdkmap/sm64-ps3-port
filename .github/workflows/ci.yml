@@ -22,7 +22,7 @@ jobs:
          echo 'export PS3DEV=/usr/local/ps3dev' >> ~/.bashrc
          echo 'export PSL1GHT=$PS3DEV/libpsl1ght' >> ~/.bashrc
          echo 'export PATH="$PATH:$PS3DEV/bin:$PS3DEV/ppu/bin:$PS3DEV/spu/bin"' >> ~/.bashrc
-         . ~/.bashrc
+         ~/.bashrc
          sudo mkdir $PS3DEV
          sudo chown $USER $PS3DEV
          export BUILDDIR=/usr/src/ps3toolchain

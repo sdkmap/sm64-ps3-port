@@ -25,7 +25,7 @@ TARGET_WEB ?= 0
 # Build for PS3
 TARGET_PS3 ?= 1
 # Compiler to use (ido or gcc)
-COMPILER ?= ido
+COMPILER ?= gcc
 
 # Automatic settings only for ports
 ifeq ($(TARGET_N64),0)

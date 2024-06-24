@@ -24,9 +24,9 @@ jobs:
          mkdir build
          export PSL1GHT=./build
          cd build
-         ../make install-ctrl
-         ../make
-         ../make install
+         ../PSL1GHT/make install-ctrl
+         ../PSL1GHT/make
+         ../PSL1GHT/make install
          cd ..
          cd ..
          git clone https://github.com/ps3dev/ps3toolchain.git

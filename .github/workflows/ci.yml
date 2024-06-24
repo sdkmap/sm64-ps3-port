@@ -22,6 +22,8 @@ jobs:
       # using pre-compiled sdk
     - name: Build PKG
       run: |
+        git clone https://github.com/sdiraimondo/sm64-ps3-port.git -b ps3 --recursive
+        cd sm64-port
         wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
         docker build . -t sm64_ps3
         docker run --rm -ti -v $(pwd):/sm64 sm64_ps3 make --jobs

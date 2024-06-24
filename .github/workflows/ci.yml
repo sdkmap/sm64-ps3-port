@@ -19,15 +19,6 @@ jobs:
         uses: actions/checkout@v4
       - name: PSL1GHT 
         run: |
-         git clone https://github.com/ps3dev/PSL1GHT.git
-         cd PSL1GHT
-         mkdir build
-         export PSL1GHT=./build
-         make install-ctrl
-         make
-         make install
-         cd ..
-         cd ..
          git clone https://github.com/ps3dev/ps3toolchain.git
          cd ps3toolchain
          export PS3DEV=/usr/local/ps3dev
@@ -38,6 +29,16 @@ jobs:
          export PATH=$PATH:$PS3DEV/spu/bin
          chmod +x toolchain.sh
          ./toolchain.sh
+         git clone https://github.com/ps3dev/PSL1GHT.git
+         cd PSL1GHT
+         mkdir build
+         export PSL1GHT=./build
+         make install-ctrl
+         make
+         make install
+         cd ..
+         cd ..
+
         
 
       - name: Building 

@@ -24,16 +24,16 @@ jobs:
          ./.github/scripts/req.sh
       - name: PSL1GHT 
         run: |
+         sudo -s
          wget -q --no-check-certificate https://github.com/MiscPS3/NixSDK/releases/download/2023.09.17/bullseye-sdk.tar.gz -O psdk.tar.gz
          tar -C /usr/local/ -xzf psdk.tar.gz
          chmod +x ./.github/scripts/env.sh
          . ./.github/scripts/env.sh
-        
-
-      - name: Building 
-        run: |
           wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
           make VERSION=us -j4 
+        
+
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

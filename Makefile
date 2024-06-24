@@ -8,6 +8,7 @@ default: all
 
 # These options can either be changed by modifying the makefile, or
 # by building with 'make SETTING=value'. 'make clean' may be required.
+CFLAGS=-std=c99
 
 # Version of the game to build
 VERSION ?= us

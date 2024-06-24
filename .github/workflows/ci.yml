@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install autoconf automake bison flex gcc libelf-dev make texinfo libncurses5-dev patch python subversion wget zlib1g-dev libtool libtool-bin python-dev bzip2 libgmp3-dev pkg-config g++ libssl-dev clang libelf-dev libelf++0 libelf1 build-essential pkg-config libusb-1.0-0-dev git gcc g++ gcc-multilib g++-multilib make libsdl2-dev zlib1g-dev 
+          sudo apt-get install autoconf automake bison flex gcc libelf-dev make texinfo libncurses5-dev patch subversion wget zlib1g-dev libtool libtool-bin python2 bzip2 libgmp3-dev pkg-config g++ libssl-dev clang libelf-dev libelf++0 libelf1 build-essential pkg-config libusb-1.0-0-dev git gcc g++ gcc-multilib g++-multilib make libsdl2-dev zlib1g-dev 
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: PSL1GHT 

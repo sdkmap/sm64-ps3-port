@@ -33,7 +33,7 @@ jobs:
       run: |
        wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
        mkdir -p build/us_ps3/
-       make pkg VERSION=us -j4 build/us_ps3/sm64.us.f3dex2e.pkg
+       make VERSION=us -j4 build/us_ps3/sm64.us.f3dex2e.pkg
 
 
 

@@ -10,8 +10,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-
-
+    - name: install
+      run: git build-essential pkg-config libusb-1.0-0-dev libsdl2-dev
+    
 
 
     - name: Set env vars
@@ -26,10 +27,7 @@ jobs:
         echo "PS3DEV=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
         echo "PSL1GHT=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
     
-    - name: Install build dependencies
-      run: |
-         chmod +x ./.github/scripts/req.sh
-         ./.github/scripts/req.sh
+
 
     - name: build
       run: |

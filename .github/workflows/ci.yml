@@ -26,6 +26,7 @@ jobs:
         run: |
          wget -q --no-check-certificate https://github.com/MiscPS3/NixSDK/releases/download/2023.09.17/bullseye-sdk.tar.gz -O psdk.tar.gz
          tar -C /usr/local/ -xzf psdk.tar.gz
+         chmod +x ./.github/scripts/env.sh
          . ./.github/scripts/env.sh
         
 

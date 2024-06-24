@@ -4,36 +4,30 @@ on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
   build_pkg:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v3
+    - name: setup docker
+      uses: docker-practice/actions-setup-docker@master
+
 
     - name: install
       run: sudo apt install -y  libc6-dev-powerpc-cross gcc-powerpc64-linux-gnu gcc-powerpc-linux-gnu cpp-powerpc-linux-gnu gcc-powerpc64le-linux-gnu binutils-powerpc64-linux-gnu binutils-powerpc64le-linux-gnu binutils-powerpc-linux-gnu  bsdmainutils git python3 libglew-dev git build-essential pkg-config libusb-1.0-0-dev libsdl2-dev
     
 
 
-    - name: Set env vars
-      id: slug
-      run: |
-        echo "sha_name=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
+    - name: Checkout
+      uses: actions/checkout@v3
 
       # using pre-compiled sdk
-    - name: Download PSL1GHT Toolchain
+    - name: Build PKG
       run: |
-        curl -sL https://github.com/bucanero/ps3toolchain/releases/download/ubuntu-latest-fad3b5fb/ps3dev-ubuntu-latest-2020-08-31.tar.gz | tar xvz -C ./
-        echo "PS3DEV=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
-        echo "PSL1GHT=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
-    
+        wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
+        docker build . -t sm64_ps3
+        docker run --rm -ti -v $(pwd):/sm64 sm64_ps3 make --jobs
 
 
-    - name: build
-      run: |
-       wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
-       mkdir -p build/us_ps3/
-       make
+ 
 
 
 

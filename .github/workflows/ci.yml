@@ -23,6 +23,8 @@ jobs:
          cd ps3toolchain
          sudo chmod g+w /usr/local
          sudo chgrp staff /usr/local
+         sudo chmod g+w /usr/local/ps3dev
+         sudo chgrp staff /usr/local/ps3dev
          sudo mkdir /usr/local/ps3dev
          export PS3DEV=/usr/local/ps3dev
          export PSL1GHT=$PS3DEV

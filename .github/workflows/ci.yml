@@ -25,6 +25,7 @@ jobs:
         cd sm64-port
         wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
         docker build . -t sm64ps3
+        docker run --rm -v $(pwd):/sm64 sm64ps3 make --jobs
 
 
  

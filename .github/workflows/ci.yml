@@ -16,7 +16,7 @@ jobs:
                 image: markstreet/sm64:ps3
                 options: -v ${{ github.workspace }}:/var/www
                 run: |
-                    apt install python2.7
+                    apt install -y python2.7 python3 git
                     git clone https://github.com/fgsfdsfgs/sm64-port.git -b ps3 --recursive
                     ls
                     cd sm64-port

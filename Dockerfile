@@ -22,6 +22,10 @@ RUN echo "\nca_certificate=/etc/ssl/certs/ca-certificates.crt" | tee -a /etc/wge
 ENV PS3DEV /ps3dev
 ENV PSL1GHT ${PS3DEV}
 ENV PATH ${PATH}:${PS3DEV}/bin:${PS3DEV}/ppu/bin:${PS3DEV}/spu/bin
+RUN sed -i 's/\r$//' $app/filename.sh  && \  
+        chmod +x $app/filename.sh
+
+ENTRYPOINT $app/filename.sh
 
 RUN /build/toolchain.sh
 

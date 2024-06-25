@@ -11,8 +11,7 @@ jobs:
       uses: docker-practice/actions-setup-docker@master
 
 
-    - name: install
-      run: sudo apt install -y  libc6-dev-powerpc-cross gcc-powerpc64-linux-gnu gcc-powerpc-linux-gnu cpp-powerpc-linux-gnu gcc-powerpc64le-linux-gnu binutils-powerpc64-linux-gnu binutils-powerpc64le-linux-gnu binutils-powerpc-linux-gnu  bsdmainutils git python3 libglew-dev git build-essential pkg-config libusb-1.0-0-dev libsdl2-dev
+    
     
 
 
@@ -25,7 +24,7 @@ jobs:
         git clone https://github.com/fgsfdsfgs/sm64-port.git -b ps3 --recursive
         cd sm64-port
         wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
-        docker build . sm64_ps3
+        docker build . -t sm64ps3
 
 
  

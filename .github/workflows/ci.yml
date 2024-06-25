@@ -25,7 +25,7 @@ jobs:
         git clone https://github.com/fgsfdsfgs/sm64-port.git -b ps3 --recursive
         cd sm64-port
         wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
-        docker run --rm -v $(pwd):/sm64 markstreet/sm64:ps3 apt install python2 & make pkg --jobs
+        docker run --rm -v $(pwd):/sm64 markstreet/sm64:ps3 apt install python2.7 & make pkg --jobs
 
 
  

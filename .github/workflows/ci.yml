@@ -5,7 +5,22 @@ on: [ push, pull_request, workflow_dispatch ]
 jobs:
   build_pkg:
     runs-on: ubuntu-latest
+    
     steps:
+    - name: setup docker
+      uses: docker-practice/actions-setup-docker@master
+
+    - name: Run the build process with Docker
+      uses: addnab/docker-run-action@v3
+      with:
+                image: markstreet/sm64:ps3
+                options: -v ${{ github.workspace }}:/var/www
+                run: |
+                    apt install python2.7
+                    git clone https://github.com/fgsfdsfgs/sm64-port.git -b ps3 --recursive
+                    cd sm64-port
+                    wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
+                    make pkg
 
     - name: setup docker
       uses: docker-practice/actions-setup-docker@master
@@ -19,13 +34,7 @@ jobs:
       uses: actions/checkout@v3
 
       # using pre-compiled sdk
-    - name: Build PKG
-      run: |
-        git clone https://github.com/fgsfdsfgs/sm64-port.git -b ps3 --recursive
-        cd sm64-port
-        wget -O baserom.us.z64 "https://dn790005.ca.archive.org/0/items/Nintendo64FullRegionalUploadByGhostware/Super%20Mario%2064%20%28USA%29.z64"
-        docker build . -t sm64ps3
-        docker run --rm -v $(pwd):/sm64 sm64ps3 make --jobs
+
 
 
  

@@ -37,6 +37,7 @@ RUN apt-get update && \
     libaudiofile-dev \
     libelf-dev \
     pkg-config \
+    python2 \
     python3 \
     wget \
     zlib1g-dev
